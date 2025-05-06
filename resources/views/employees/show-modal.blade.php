@@ -35,11 +35,11 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editEmployeeModal-{{ $employee->id }}" data-bs-dismiss="modal">
-                    <i class="fa fa-edit"></i> Editar
-                </button>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
                     <i class="fa fa-sign-out-alt"></i> Salir
+                </button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editEmployeeModal-{{ $employee->id }}" data-bs-dismiss="modal">
+                    <i class="fa fa-edit"></i> Editar
                 </button>
             </div>
         </div>

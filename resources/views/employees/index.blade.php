@@ -6,8 +6,13 @@
     
     <!-- Mostrar notificación de éxito -->
     @if (session('success'))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{ session('success') }}
+    <div class="alert 
+        @if (str_contains(session('success'), 'creado')) alert-primary
+        @elseif (str_contains(session('success'), 'actualizado')) alert-success
+        @elseif (str_contains(session('success'), 'eliminado')) alert-danger
+        @endif
+        alert-dismissible fade show" role="alert">
+        {!! str_replace(session('success'), session('success'), preg_replace('/Empleado (.*?) (creado|actualizado|eliminado)/', 'Empleado <strong>$1</strong> $2', session('success'))) !!}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
@@ -93,7 +98,7 @@
 <style>
     .notification {
         position: fixed;
-        bottom: 20px;
+        top: 60px;
         right: 20px;
         z-index: 1050;
         max-width: 250px;
@@ -103,7 +108,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const alertElement = document.querySelector('.alert-danger');
+        const alertElement = document.querySelector('.alert-danger, .alert-success, .alert-primary');
         if (alertElement) {
             alertElement.classList.add('notification');
             setTimeout(() => {

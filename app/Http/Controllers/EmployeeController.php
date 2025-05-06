@@ -36,9 +36,9 @@ class EmployeeController extends Controller
             'telefono_personal' => 'required|string|max:20',
         ]);
 
-        Employee::create($request->all());
+        $employee = Employee::create($request->all());
 
-        return redirect()->route('employees.index')->with('success', 'Empleado creado exitosamente.');
+        return redirect()->route('employees.index')->with('success', "Empleado '{$employee->nombre}' creado exitosamente.");
     }
 
     /**
@@ -71,7 +71,7 @@ class EmployeeController extends Controller
 
         $employee->update($request->all());
 
-        return redirect()->route('employees.index')->with('success', 'Empleado actualizado exitosamente.');
+        return redirect()->route('employees.index')->with('success', "Empleado '{$employee->nombre}' actualizado exitosamente.");
     }
 
     /**
