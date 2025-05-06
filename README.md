@@ -7,6 +7,83 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+# Asi Lineas
+
+## Descripción
+Asi Lineas es una aplicación web diseñada para gestionar empleados de manera eficiente. Incluye funcionalidades como creación, edición, eliminación, exportación de datos y más, utilizando DataTables para una experiencia interactiva.
+
+## Requisitos del sistema
+- PHP >= 8.0
+- Composer
+- Node.js y npm
+- Servidor web (por ejemplo, Apache o Nginx)
+- Base de datos MySQL
+
+## Instalación
+
+### Clonar el repositorio
+```bash
+git clone https://github.com/saulitoescobar/asilin.git
+cd asilin
+```
+
+### Configurar el entorno
+1. Copia el archivo `.env.example` y renómbralo como `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+2. Configura las variables de entorno en el archivo `.env`, como la conexión a la base de datos.
+
+### Instalar dependencias
+1. Instalar dependencias de PHP con Composer:
+   ```bash
+   composer install
+   ```
+2. Instalar dependencias de JavaScript con npm:
+   ```bash
+   npm install
+   ```
+
+### Generar la clave de la aplicación
+```bash
+php artisan key:generate
+```
+
+### Migrar la base de datos
+```bash
+php artisan migrate
+```
+
+### Poblar la base de datos con datos de ejemplo (opcional)
+```bash
+php artisan db:seed
+```
+
+### Compilar los activos
+```bash
+npm run build
+```
+
+## Uso
+
+### Iniciar el servidor de desarrollo
+```bash
+php artisan serve
+```
+Accede a la aplicación en tu navegador en [http://localhost:8000](http://localhost:8000).
+
+## Funcionalidades principales
+- Gestión de empleados: crear, editar, eliminar.
+- Exportación de datos a Excel, PDF, CSV.
+- Impresión de tablas.
+- Búsqueda y paginación interactiva con DataTables.
+
+## Contribuciones
+Si deseas contribuir al proyecto, por favor realiza un fork del repositorio, crea una rama para tus cambios y envía un pull request.
+
+## Licencia
+Este proyecto está licenciado bajo la [MIT License](LICENSE).
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
