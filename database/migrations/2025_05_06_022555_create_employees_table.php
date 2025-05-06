@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('dpi');
+            $table->string('dpi', 13);
             $table->string('email');
             $table->string('telefono_personal');
             $table->timestamps();
