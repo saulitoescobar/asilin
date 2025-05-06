@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
+@section('title', 'Lista de Empleados')
+
 @section('content')
-<div class="container">
+<div class="container mt-4">
     <h1 class="text-center">Lista de Empleados</h1>
     
     <!-- Mostrar notificación de éxito -->
