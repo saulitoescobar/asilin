@@ -25,26 +25,26 @@
     <!-- Incluir el modal desde un archivo separado -->
     @include('employees.create-modal')
 
-    <table class="table table-bordered">
-        <thead>
-            <tr class="text-center"  style="background-color: navy; color: white;">
-                <th>#</th>
-                <th>Nombre</th>
-                <th>DPI</th>
-                <th>Email</th>
-                <th>Teléfono Personal</th>
-                <th>Acciones</th>
+    <table class="table table-striped table-hover table-bordered align-middle">
+        <thead class="table-dark">
+            <tr class="text-center">
+                <th class="text-center">#</th>
+                <th class="text-center">Nombre</th>
+                <th class="text-center">DPI</th>
+                <th class="text-center">Email</th>
+                <th class="text-center">Teléfono Personal</th>
+                <th class="text-center">Acciones</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($employees as $employee)
             <tr class="text-center">
-                <td>{{ $loop->iteration }}</td>
-                <td>{{ $employee->nombre }}</td>
-                <td>{{ $employee->dpi }}</td>
-                <td>{{ $employee->email }}</td>
-                <td>{{ $employee->telefono_personal }}</td>
-                <td>
+                <td class="text-center">{{ $loop->iteration }}</td>
+                <td class="text-center">{{ $employee->nombre }}</td>
+                <td class="text-center">{{ $employee->dpi }}</td>
+                <td class="text-center">{{ $employee->email }}</td>
+                <td class="text-center">{{ $employee->telefono_personal }}</td>
+                <td class="text-center">
                     <!-- Botón para abrir el modal de mostrar -->
                     <a href="#" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#showEmployeeModal-{{ $employee->id }}">
                         <i class="fa fa-eye"></i>
