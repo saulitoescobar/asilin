@@ -76,6 +76,10 @@ class CompanyController extends Controller
 
         $company->update($validated);
 
+        if ($request->ajax() || $request->wantsJson()) {
+            return response()->json(['success' => true]);
+        }
+
         return redirect()->route('companies.index')->with('success', 'Empresa actualizada exitosamente.');
     }
 

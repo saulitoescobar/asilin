@@ -91,3 +91,16 @@
         });
     });
 </script>
+<script>
+    // Limpia cualquier backdrop huérfano al cerrar cualquier modal
+    document.querySelectorAll('.modal').forEach(function(modal) {
+        modal.addEventListener('hidden.bs.modal', function () {
+            document.body.classList.remove('modal-open');
+            let backdrops = document.querySelectorAll('.modal-backdrop');
+            backdrops.forEach(function(bd) { bd.parentNode.removeChild(bd); });
+        });
+    });
+</script>
+<script>
+    // Elimina el script AJAX individual para evitar conflicto con el global
+</script>

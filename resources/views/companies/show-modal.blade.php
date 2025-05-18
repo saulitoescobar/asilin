@@ -52,7 +52,7 @@
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
                     <i class="fa fa-sign-out-alt"></i> Salir
                 </button>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCompanyModal-{{ $company->id }}" data-bs-dismiss="modal">
+                <button type="button" class="btn btn-primary" onclick="openEditModal({{ $company->id }})">
                     <i class="fa fa-edit"></i> Editar
                 </button>
             </div>
@@ -69,6 +69,34 @@
             frame.style.display = 'block';
         } else {
             frame.style.display = 'none';
+        }
+    }
+
+    function openEditModal(companyId) {
+        const showModal = document.getElementById('showCompanyModal-' + companyId);
+        // Cambia el guion por nada para coincidir con el id real del modal de edición
+        const editModal = document.getElementById('editCompanyModal' + companyId);
+        if (!editModal) {
+            alert('El modal de edición no existe en el DOM.');
+            return;
+        }
+        const bsShowModal = bootstrap.Modal.getInstance(showModal);
+        if (bsShowModal) {
+            bsShowModal.hide();
+            showModal.addEventListener('hidden.bs.modal', function handler() {
+                showModal.removeEventListener('hidden.bs.modal', handler);
+                let bsEditModal = bootstrap.Modal.getInstance(editModal);
+                if (!bsEditModal) {
+                    bsEditModal = new bootstrap.Modal(editModal);
+                }
+                bsEditModal.show();
+            });
+        } else {
+            let bsEditModal = bootstrap.Modal.getInstance(editModal);
+            if (!bsEditModal) {
+                bsEditModal = new bootstrap.Modal(editModal);
+            }
+            bsEditModal.show();
         }
     }
 </script>

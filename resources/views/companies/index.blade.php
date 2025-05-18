@@ -99,6 +99,42 @@
     </table>
 </div>
 
+@push('scripts')
+<script>
+    (function() {
+        document.querySelectorAll('form[action*="companies/"][method="post"]').forEach(function(form) {
+            form.addEventListener('submit', function(e) {
+                const methodInput = form.querySelector('input[name="_method"][value="PUT"]');
+                if (!methodInput) return;
+                e.preventDefault();
+                const formData = new FormData(form);
+                formData.set('_method', 'PUT');
+                fetch(form.action, {
+                    method: 'POST',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                    body: formData
+                })
+                .then(response => {
+                    if (response.ok) {
+                        const modalId = form.closest('.modal').id;
+                        const modal = bootstrap.Modal.getInstance(document.getElementById(modalId));
+                        if (modal) modal.hide();
+                        location.reload();
+                    } else {
+                        return response.text().then(text => { throw new Error(text); });
+                    }
+                })
+                .catch(error => {
+                    alert('Error al guardar: ' + error.message);
+                });
+            });
+        });
+    })();
+</script>
+@endpush
 <script>
     function showDocumentForDocumentsModal(select, frameId) {
         const frame = document.getElementById(frameId);
